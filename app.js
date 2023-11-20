@@ -4,6 +4,8 @@ require('dotenv').config();
 const express = require('express');
 // Logging
 const logger = require('pino')();
+// Enable CORS
+const cors = require('cors');
 
 /*
  * Configuration
@@ -53,6 +55,12 @@ var calendarEvents;
  * Set up HTTP Server
  */
 const app = express();
+
+/*
+ * Configure CORS
+ */
+app.use(cors());
+
 app.listen(HTTP_PORT, (error) => {
   if (!error) {
     logger.info("Server running on port: " + HTTP_PORT);
